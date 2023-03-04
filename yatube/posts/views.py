@@ -21,8 +21,8 @@ def group_posts(request, slug):
     title = 'Здесь будет информация о группах проекта Yatube'
     group = get_object_or_404(Group, slug=slug)
     posts = (
-            Post.objects.filter(group=group).order_by('-pub_date')
-            [:POSTS_ON_PAGE]
+        Post.objects.filter(group=group).order_by('-pub_date')
+        [:POSTS_ON_PAGE]
     )
     context = {
         'group': group,

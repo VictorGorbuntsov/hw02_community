@@ -1,18 +1,13 @@
-from django.shortcuts import render, get_object_or_404
-
-from .models import Post, Group
+from django.shortcuts import get_object_or_404, render
+from .models import Group, Post
 
 POSTS_ON_PAGE = 10
 
 
 def index(request):
-    title = 'Это главная страница прокта Yatube'
-    text = 'Последние обновления на сайте'
     posts = Post.objects.order_by('-pub_date')[:POSTS_ON_PAGE]
     context = {
         'posts': posts,
-        'title': title,
-        'text': text,
     }
     return render(request, 'posts/index.html', context)
 

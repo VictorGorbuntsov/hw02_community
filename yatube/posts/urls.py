@@ -1,5 +1,3 @@
-# from django.contrib import admin
-# импорт include позволит использовать адреса, включенные в приложения
 from django.urls import path
 from . import views
 

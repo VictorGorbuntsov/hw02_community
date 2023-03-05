@@ -18,7 +18,6 @@ def index(request):
 
 
 def group_posts(request, slug):
-    title = 'Здесь будет информация о группах проекта Yatube'
     group = get_object_or_404(Group, slug=slug)
     posts = (
         Post.objects.filter(group=group).order_by('-pub_date')
@@ -27,7 +26,5 @@ def group_posts(request, slug):
     context = {
         'group': group,
         'posts': posts,
-        'title': title,
-        'slug': slug,
     }
     return render(request, 'posts/group_list.html', context)

@@ -1,12 +1,11 @@
 from django.conf import settings
-
 from django.shortcuts import get_object_or_404, render
 
 from .models import Group, Post
 
 
 def index(request):
-    posts = Post.objects.order_by('-pub_date')[:settings.POSTS_ON_PAGE]
+    posts = Post.objects[:settings.POSTS_ON_PAGE]
     context = {
         'posts': posts,
     }

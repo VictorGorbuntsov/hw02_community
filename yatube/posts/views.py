@@ -1,8 +1,8 @@
+from django.conf import settings
+
 from django.shortcuts import get_object_or_404, render
 
 from .models import Group, Post
-
-from django.conf import settings
 
 
 def index(request):
@@ -15,10 +15,7 @@ def index(request):
 
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
-    posts = (
-        Post.objects.filter(group=group).order_by('-pub_date')
-        [:settings.POSTS_ON_PAGE]
-    )
+    posts = group.posts.all()[:settings.POSTS_ON_PAGE]
     context = {
         'group': group,
         'posts': posts,

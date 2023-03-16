@@ -5,7 +5,7 @@ from .models import Group, Post
 
 
 def index(request):
-    posts = Post.objects[:settings.POSTS_ON_PAGE]
+    posts = Post.objects.all()[:settings.POSTS_ON_PAGE]
     context = {
         'posts': posts,
     }

@@ -6,7 +6,7 @@
 
   <div class="container py-5">
     <p>Это главная страница этого замечательного сайта!</p>
-    {% for post in posts %}
+    {% for post in page_obj %}
       <article>
         <ul>
           <li>
@@ -23,5 +23,6 @@
       </article>
       {% if not forloop.last %}<hr>{% endif %} 
     {% endfor %}
+    {% include 'includes/paginator.html' %}
   </div>  
 {% endblock %}
